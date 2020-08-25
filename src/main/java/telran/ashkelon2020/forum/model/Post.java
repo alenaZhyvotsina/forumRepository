@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.Singular;
 
 @Getter
 @NoArgsConstructor
@@ -21,9 +22,10 @@ public class Post {
 	String content;
 	String author;
 	LocalDateTime dateCreated;
-	@Setter
+	@Singular
 	Set<String> tags;
 	int likes;
+	@Singular
 	Set<Comment> comments;
 	
 	public Post(String title, String content, String author, Set<String> tags) {

@@ -23,7 +23,7 @@ public class PostResponseDto {
 	//String[] tags;
 	Integer likes;
 	@Setter
-	Set<Comment> comments;
+	Set<CommentResponceDto> comments;
 	//Comment[] comments;
 
 }

@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.experimental.PackagePrivate;
+import telran.ashkelon2020.forum.dto.CommentResponceDto;
 import telran.ashkelon2020.forum.dto.CommentDto;
+import telran.ashkelon2020.forum.dto.DatePeriodDto;
 import telran.ashkelon2020.forum.dto.PostDto;
 import telran.ashkelon2020.forum.dto.PostResponseDto;
 import telran.ashkelon2020.forum.service.ForumService;
@@ -56,6 +59,26 @@ public class ForumController {
 	@GetMapping("/forum/posts/author/{author}")
 	public List<PostResponseDto> findPostsByAuthor(@PathVariable String author) {
 		return forumService.findPostsByAuthor(author);
+	}
+	
+	@PostMapping("/forum/posts/tags")
+	public Iterable<PostResponseDto> findPostsByTags(@RequestBody List<String> tags) {
+		return forumService.findPostsByTags(tags);
+	}
+	
+	@PostMapping("/forum/posts/dates")
+	public Iterable<PostResponseDto> findPostsByDates(@RequestBody DatePeriodDto datePeriodDto){
+		return forumService.findPostsByDates(datePeriodDto);
+	}
+	
+	@GetMapping("/forum/comments/post/{id}")
+	public Iterable<CommentResponceDto> findAllPostComments(@PathVariable String id){
+		return forumService.findAllPostComments(id);
+	}
+		
+	@GetMapping("/forum/comments/post/{id}/author/{author}")
+	public Iterable<CommentResponceDto> findAllPostCommentsByAuthor(@PathVariable String id, @PathVariable String author){
+		return forumService.findAllPostCommentsByAuthor(id, author);
 	}
 
 }
