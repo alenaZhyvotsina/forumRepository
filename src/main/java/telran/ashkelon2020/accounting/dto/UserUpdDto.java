@@ -1,4 +1,4 @@
-package telran.ashkelon2020.forum.dto.user;
+package telran.ashkelon2020.accounting.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

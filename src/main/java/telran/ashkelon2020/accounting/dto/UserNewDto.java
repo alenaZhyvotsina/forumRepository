@@ -1,6 +1,6 @@
-package telran.ashkelon2020.forum.dto.user;
+package telran.ashkelon2020.accounting.dto;
 
-import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import lombok.AllArgsConstructor;
@@ -10,13 +10,12 @@ import lombok.NoArgsConstructor;
 @Getter 
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
+public class UserNewDto {
 	
 	String login;
 	String password;
 	String firstName;
 	String lastName;
-	LocalDateTime expDate;  // now() + 30 days
-	Set<String> roles; // ADMIN, MODERATOR, USER (default)
+	Set<String> roles = new HashSet<String>(); // ADMIN, MODERATOR, USER (default)
 
 }

@@ -1,4 +1,4 @@
-package telran.ashkelon2020.forum.model;
+package telran.ashkelon2020.accounting.model;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -22,11 +22,13 @@ public class User {
 		
 	@Id
 	String login;
+	@Setter
 	String password;
 	@Setter
 	String firstName;
 	@Setter
 	String lastName;
+	@Setter
 	LocalDateTime expDate;  // now() + 30 days
 	Set<String> roles; // ADMIN, MODERATOR, USER (default)
 	
@@ -40,9 +42,9 @@ public class User {
 		if(roles != null && !roles.isEmpty()) {
 			roles.forEach(r -> addRole(r));			
 		}
-		addRole("USER");
+		//addRole("USER");
 				
-		this.expDate = LocalDateTime.now().plusDays(30);
+		//this.expDate = LocalDateTime.now().plusDays(30);
 	}
 	
 	public User(String login, String password, String firstName, String lastName) {
@@ -57,7 +59,7 @@ public class User {
 	}
 	
 	public boolean deleteRole(String role) {
-		if(role == null || role.isEmpty() || role.equalsIgnoreCase("USER")) {
+		if(role == null || role.isEmpty()) {
 			return false;
 		}
 		return this.roles.remove(role.toUpperCase());
